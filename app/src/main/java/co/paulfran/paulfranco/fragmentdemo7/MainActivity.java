@@ -61,7 +61,7 @@ public class MainActivity extends AppCompatActivity implements FragmentManager.O
         FragmentTransaction transaction = manager.beginTransaction();
         if (fragmentB != null){
             transaction.remove(fragmentB);
-            transaction.addToBackStack("RemFragB");
+            transaction.popBackStack("RemFragB");
             transaction.commit();
         } else {
             Toast.makeText(this, "Fragment B not found", Toast.LENGTH_SHORT).show();
