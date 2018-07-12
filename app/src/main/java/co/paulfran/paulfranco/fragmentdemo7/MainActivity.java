@@ -61,7 +61,7 @@ public class MainActivity extends AppCompatActivity implements FragmentManager.O
         FragmentTransaction transaction = manager.beginTransaction();
         if (fragmentB != null){
             transaction.remove(fragmentB);
-            transaction.popBackStack("RemFragB");
+            transaction.addToBackStack("RemFragB");
             transaction.commit();
         } else {
             Toast.makeText(this, "Fragment B not found", Toast.LENGTH_SHORT).show();
@@ -177,5 +177,14 @@ public class MainActivity extends AppCompatActivity implements FragmentManager.O
 
         Log.i(TAG, "\n" + msg.toString() + " \n ");
 
+    }
+    @Override
+    public void onBackPressed() {
+
+        if (manager.getBackStackEntryCount() > 0) {
+            manager.popBackStack();
+        } else {
+            super.onBackPressed();
+        }
     }
 }
